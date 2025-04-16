@@ -127,46 +127,49 @@
   </div>
 
   <div class="right">
-    <div class="msg-header" onclick="toggleMessage()">🎁 Click Here</div>
-    <div class="msg-content" id="msgBox">
-      <!-- Message will appear here -->
-    </div>
+    <div class="msg-header" id="clickHere">🎁 Click Here</div>
+    <div class="msg-content" id="msgBox"></div>
 
-    <!-- Background Music -->
+    <!-- Multiple Background & Surprise Music -->
     <audio id="birthdayMusic" autoplay loop>
       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Surprise Music -->
-    <audio id="surpriseMusic">
+    <audio id="surpriseMusic1">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="surpriseMusic2">
       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
     </audio>
   </div>
 
   <script>
-    function toggleMessage() {
-      alert("Button clicked!"); // Debugging message to verify the button click
-
+    document.getElementById("clickHere").addEventListener("click", function () {
       const msg = document.getElementById('msgBox');
-      const surprise = document.getElementById("surpriseMusic");
       const bgMusic = document.getElementById("birthdayMusic");
+      const surpriseTracks = [
+        document.getElementById("surpriseMusic1"),
+        document.getElementById("surpriseMusic2")
+      ];
 
-      // 🎉 Random sweet birthday message
       const messages = [
         "🎂 Wish you the happiest birthday ever! May your day be filled with smiles, laughter, and all your favorite things! 🥳💫",
         "🎉 Happy Birthday! May this year bring you happiness, health, and success! Enjoy every moment! 🎈🎁",
         "🎂 Wishing you an unforgettable birthday full of love, laughter, and joy! 🌟🎉"
       ];
 
-      // Show the message
+      // Set and show message
       msg.innerHTML = messages[Math.floor(Math.random() * messages.length)];
       msg.classList.add('show');
 
-      // Music transition
+      // Pause background music
       bgMusic.pause();
       bgMusic.currentTime = 0;
+
+      // Play random surprise track
+      const surprise = surpriseTracks[Math.floor(Math.random() * surpriseTracks.length)];
       surprise.play();
-    }
+    });
   </script>
 
 </body>
