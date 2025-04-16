@@ -40,7 +40,7 @@
     .center-text {
       position: absolute;
       font-size: 48px;
-      color: #e91e63; /* Pink color */
+      color: #e91e63;
       font-family: 'Brush Script MT', cursive;
       text-shadow: 3px 3px 8px #000;
       text-align: center;
@@ -70,7 +70,8 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       font-size: 16px;
-      color: #444;
+      color: #e91e63; /* pink text */
+      white-space: pre-line;
     }
 
     .msg-content.show {
@@ -84,85 +85,76 @@
     .frame4 { bottom: 10%; right: 5%; }
     .frame5 { top: 40%; left: 10%; }
     .frame6 { bottom: 40%; right: 10%; }
-    .frame7 { top: 5%; left: 40%; } /* New frame above text */
-    .frame8 { bottom: 5%; left: 40%; } /* New frame below text */
+    .frame7 { top: 5%; left: 40%; }
+    .frame8 { bottom: 5%; left: 40%; }
   </style>
 </head>
 <body>
 
   <div class="left">
-    <!-- 6 Frames with images -->
-    <div class="frame frame1">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_1.jpg" alt="Photo 1">
-    </div>
-    <div class="frame frame2">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_2.jpg" alt="Photo 2">
-    </div>
-    <div class="frame frame3">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_3.jpg" alt="Photo 3">
-    </div>
-    <div class="frame frame4">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_4.jpg" alt="Photo 4">
-    </div>
-    <div class="frame frame5">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_5.jpg" alt="Photo 5">
-    </div>
-    <div class="frame frame6">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_6.jpg" alt="Photo 6">
-    </div>
+    <div class="frame frame1"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_1.jpg" alt="Photo 1"></div>
+    <div class="frame frame2"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_2.jpg" alt="Photo 2"></div>
+    <div class="frame frame3"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_3.jpg" alt="Photo 3"></div>
+    <div class="frame frame4"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_4.jpg" alt="Photo 4"></div>
+    <div class="frame frame5"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_5.jpg" alt="Photo 5"></div>
+    <div class="frame frame6"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_6.jpg" alt="Photo 6"></div>
+    <div class="frame frame7"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_7.jpg" alt="Photo 7"></div>
+    <div class="frame frame8"><img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_8.jpg" alt="Photo 8"></div>
 
-    <!-- New Frames Above and Below Text -->
-    <div class="frame frame7">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_7.jpg" alt="Photo 7">
-    </div>
-    <div class="frame frame8">
-      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_8.jpg" alt="Photo 8">
-    </div>
-
-    <!-- Center Happy Birthday Text -->
     <div class="center-text">Happy Birthday!</div>
   </div>
 
   <div class="right">
     <div class="msg-header" onclick="toggleMessage()">🎁 Click Here</div>
-    <div class="msg-content" id="msgBox">
-      <!-- Message will appear here -->
-    </div>
+    <div class="msg-content" id="msgBox"></div>
 
-    <!-- Background Music -->
-    <audio id="birthdayMusic" autoplay loop>
+    <!-- Background Music (muted initially) -->
+    <audio id="birthdayMusic" autoplay loop muted>
       <source src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/happy-birthday-254480.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- New Music 2 -->
+    <!-- Surprise Music -->
     <audio id="music2">
       <source src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/music_2.mp3" type="audio/mpeg">
     </audio>
-
   </div>
 
   <script>
-    function toggleMessage() {
-      alert("Button clicked!"); // Debugging message to verify the button click
+    // Unmute and play music after short delay to satisfy browser autoplay policy
+    window.addEventListener('DOMContentLoaded', () => {
+      const bgMusic = document.getElementById("birthdayMusic");
+      setTimeout(() => {
+        bgMusic.muted = false;
+        bgMusic.play();
+      }, 500);
+    });
 
+    let currentMessage = 0;
+    const messages = [
+      "मांगी थी दुआ रब से  देना जो अलग हो सबसे खुदा ने फिर तुमसे मिला दिया और फिर कहा ख्याल रखना अनमोल है सबसे तुम प्यारी सी Sonam",
+      "यार सोनम कुछ पूछना है बताओगी क्या स से होता तो सूरज है पर मेरे अंधकार से भरे जीवन में दीप बन कर रास्ता दिखेगी क्या ??\nसोने जाने से पहले पहले जैसे एक msg करके जाओगी ना रोज झगड़ा करने के बाद भी पहले जैसे सुबह हमको फिर से जगाओगी ना ?\nहम में कुछ भी हो जाए हमेशा मेरी ही रहोगी ना एक बार बोल दो ना की तुम हमेशा मेरा साथ नीभाओगी ना ???",
+      "जरुरी है तू,\nहाँ कभी कहा नहीं... पर जरुरी है तू बिलकुल ऐसे ही जैसे सुबह सुबह की वो चाय... चाय भले फीकी हो या कोरी हो, पर जिसके बिना दिन की शुरआत नहीं होती, उतनी जरुरी है तू।\nकोई डाइटिंग करने वाला औट्स के बिना टीवी जैसे रिमोट के बिना.... जैसे इतिहास सदियों बिना.... जैसे सागर नदियों बिना...\nजैसे कोई सरकारी दफ्तर के कबाट फाइल के बिना आज कल का युथ जैसे मोबाइल के बिना ज्यादा कहाँ कहता हूँ, बस... इतनी ही जरुरी है तू...\nमिसालें लिखने बैठूं तो सालों लग जाएंगे जैसे एक स्कूल स्टूडेंट को एग्जाम के लिए पेन जैसे किसी दीवार पर घड़ियाल और उसका सेल\nइतनी ही जरुरी है तू... जैसे कोई संगीतकार साज़ के बिना जैसे कोई गीतकार आवाज़ के बिना\nज्यादा कहाँ कहता हूँ मैं... बस... इतनी ही जरुरी है तू\nजरुरी है तू... Sona..."
+    ];
+
+    function toggleMessage() {
       const msg = document.getElementById('msgBox');
-      const surprise = document.getElementById("surpriseMusic");
       const bgMusic = document.getElementById("birthdayMusic");
       const music2 = document.getElementById("music2");
 
-      // 🎉 Random sweet birthday message
-      const messages = [
-        "मांगी थी दुआ रब से  देना जो अलग हो सबसे खुदा ने फिर तुमसे मिला दिया और फिर कहा ख्याल रखना अनमोल है सबसेतुम प्यारी सी Sonam"
-      ];
+      if (currentMessage < messages.length) {
+        msg.innerText = messages[currentMessage];
+        msg.classList.add('show');
+        currentMessage++;
 
-      // Show the message
-      msg.innerHTML = messages[Math.floor(Math.random() * messages.length)];
-      msg.classList.add('show');
-
-      // Music transition: Stop music 1 (background music) and play music 2
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-      music2.play();
+        // First time click = stop bg music & play music2
+        if (currentMessage === 1) {
+          bgMusic.pause();
+          bgMusic.currentTime = 0;
+          music2.play();
+        }
+      } else {
+        msg.innerText = "🎉 All messages shown 🎉";
+      }
     }
   </script>
 
