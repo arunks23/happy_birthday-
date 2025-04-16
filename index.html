@@ -15,7 +15,7 @@
     .left {
       width: 70%;
       position: relative;
-      background: url('https://i.ibb.co/pzKb4CV/birthday-bg.jpg') no-repeat center center;
+      background: url('https://raw.githubusercontent.com/arunks23/happy_birthday-/main/back%20groud.jpg') no-repeat center center;
       background-size: cover;
       display: flex;
       align-items: center;
@@ -37,17 +37,10 @@
       object-fit: cover;
     }
 
-    .bow {
-      width: 30px;
-      position: absolute;
-      top: -10px;
-      right: -10px;
-    }
-
     .center-text {
       position: absolute;
       font-size: 48px;
-      color: #fff;
+      color: #e91e63; /* Pink color */
       font-family: 'Brush Script MT', cursive;
       text-shadow: 3px 3px 8px #000;
       text-align: center;
@@ -91,35 +84,39 @@
     .frame4 { bottom: 10%; right: 5%; }
     .frame5 { top: 40%; left: 10%; }
     .frame6 { bottom: 40%; right: 10%; }
+    .frame7 { top: 5%; left: 40%; } /* New frame above text */
+    .frame8 { bottom: 5%; left: 40%; } /* New frame below text */
   </style>
 </head>
 <body>
 
   <div class="left">
-    <!-- 6 Frames -->
+    <!-- 6 Frames with images -->
     <div class="frame frame1">
-      <img src="https://via.placeholder.com/150" alt="Photo 1">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_1.jpg" alt="Photo 1">
     </div>
     <div class="frame frame2">
-      <img src="https://via.placeholder.com/150" alt="Photo 2">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_2.jpg" alt="Photo 2">
     </div>
     <div class="frame frame3">
-      <img src="https://via.placeholder.com/150" alt="Photo 3">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_3.jpg" alt="Photo 3">
     </div>
     <div class="frame frame4">
-      <img src="https://via.placeholder.com/150" alt="Photo 4">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_4.jpg" alt="Photo 4">
     </div>
     <div class="frame frame5">
-      <img src="https://via.placeholder.com/150" alt="Photo 5">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_5.jpg" alt="Photo 5">
     </div>
     <div class="frame frame6">
-      <img src="https://via.placeholder.com/150" alt="Photo 6">
-      <img class="bow" src="https://www.freeiconspng.com/thumbs/bow-png/bow-png-14.png" alt="Bow">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_6.jpg" alt="Photo 6">
+    </div>
+
+    <!-- New Frames Above and Below Text -->
+    <div class="frame frame7">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_7.jpg" alt="Photo 7">
+    </div>
+    <div class="frame frame8">
+      <img src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/img_8.jpg" alt="Photo 8">
     </div>
 
     <!-- Center Happy Birthday Text -->
@@ -127,49 +124,46 @@
   </div>
 
   <div class="right">
-    <div class="msg-header" id="clickHere">🎁 Click Here</div>
-    <div class="msg-content" id="msgBox"></div>
+    <div class="msg-header" onclick="toggleMessage()">🎁 Click Here</div>
+    <div class="msg-content" id="msgBox">
+      <!-- Message will appear here -->
+    </div>
 
-    <!-- Multiple Background & Surprise Music -->
+    <!-- Background Music -->
     <audio id="birthdayMusic" autoplay loop>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      <source src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/happy-birthday-254480.mp3" type="audio/mpeg">
     </audio>
 
-    <audio id="surpriseMusic1">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    <!-- New Music 2 -->
+    <audio id="music2">
+      <source src="https://raw.githubusercontent.com/arunks23/happy_birthday-/main/music_2.mp3" type="audio/mpeg">
     </audio>
-    <audio id="surpriseMusic2">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
-    </audio>
+
   </div>
 
   <script>
-    document.getElementById("clickHere").addEventListener("click", function () {
+    function toggleMessage() {
+      alert("Button clicked!"); // Debugging message to verify the button click
+
       const msg = document.getElementById('msgBox');
+      const surprise = document.getElementById("surpriseMusic");
       const bgMusic = document.getElementById("birthdayMusic");
-      const surpriseTracks = [
-        document.getElementById("surpriseMusic1"),
-        document.getElementById("surpriseMusic2")
-      ];
+      const music2 = document.getElementById("music2");
 
+      // 🎉 Random sweet birthday message
       const messages = [
-        "🎂 Wish you the happiest birthday ever! May your day be filled with smiles, laughter, and all your favorite things! 🥳💫",
-        "🎉 Happy Birthday! May this year bring you happiness, health, and success! Enjoy every moment! 🎈🎁",
-        "🎂 Wishing you an unforgettable birthday full of love, laughter, and joy! 🌟🎉"
+        "मांगी थी दुआ रब से  देना जो अलग हो सबसे खुदा ने फिर तुमसे मिला दिया और फिर कहा ख्याल रखना अनमोल है सबसेतुम प्यारी सी Sonam"
       ];
 
-      // Set and show message
+      // Show the message
       msg.innerHTML = messages[Math.floor(Math.random() * messages.length)];
       msg.classList.add('show');
 
-      // Pause background music
+      // Music transition: Stop music 1 (background music) and play music 2
       bgMusic.pause();
       bgMusic.currentTime = 0;
-
-      // Play random surprise track
-      const surprise = surpriseTracks[Math.floor(Math.random() * surpriseTracks.length)];
-      surprise.play();
-    });
+      music2.play();
+    }
   </script>
 
 </body>
